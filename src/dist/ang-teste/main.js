@@ -179,7 +179,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var FavoritoComponent = /** @class */ (function () {
     function FavoritoComponent() {
-        this.projetos = {};
+        this.projetos = new Object();
         this.projetos = {
             nome: "Projeto1"
         };

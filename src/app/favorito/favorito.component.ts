@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorito.component.css']
 })
 export class FavoritoComponent implements OnInit {
-  projetos = {};
+  projetos = new Object();
 
   constructor() { 
     this.projetos = {
