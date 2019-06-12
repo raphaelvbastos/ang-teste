@@ -160,12 +160,13 @@ module.exports = "<p>\n  favorito works!\n  <input type=\"text\" #ft=\"ngModel\"
 /*!************************************************!*\
   !*** ./src/app/favorito/favorito.component.ts ***!
   \************************************************/
-/*! exports provided: FavoritoComponent */
+/*! exports provided: FavoritoComponent, Teste */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavoritoComponent", function() { return FavoritoComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Teste", function() { return Teste; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -179,10 +180,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var FavoritoComponent = /** @class */ (function () {
     function FavoritoComponent() {
-        this.projetos = new Object();
-        this.projetos = {
-            nome: "Projeto1"
-        };
+        this.projetos = new Teste();
+        this.projetos.nome = "Projeto1";
     }
     FavoritoComponent.prototype.ngOnInit = function () {
     };
@@ -195,6 +194,12 @@ var FavoritoComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], FavoritoComponent);
     return FavoritoComponent;
+}());
+
+var Teste = /** @class */ (function () {
+    function Teste() {
+    }
+    return Teste;
 }());
 
 

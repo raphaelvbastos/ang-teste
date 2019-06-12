@@ -6,15 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorito.component.css']
 })
 export class FavoritoComponent implements OnInit {
-  projetos = new Object();
+  projetos = new Teste();
 
   constructor() { 
-    this.projetos = {
-      nome: "Projeto1"
-    }
+    this.projetos.nome = "Projeto1";
   }
 
   ngOnInit() {
   }
 
+}
+
+
+export class Teste {
+  nome: string;
 }
