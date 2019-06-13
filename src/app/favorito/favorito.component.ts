@@ -7,10 +7,10 @@ import { Teste } from '../teste.service';
   styleUrls: ['./favorito.component.css']
 })
 export class FavoritoComponent implements OnInit {
-  projetos = new Teste();
+  // projetos = new Teste();
 
   constructor() { 
-    this.projetos.arquivo = "Projeto1";
+    // this.projetos.arquivo = "Projeto1";
   }
 
   ngOnInit() {
