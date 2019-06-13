@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n    TESTETEST\n<div style=\"text-align:center\">\n    TESTETEST\n    <form action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n      <input type=\"file\" name=\"filetoupload\"><br>\n      <input type=\"submit\">\n    </form>\n<router-outlet></router-outlet>\n\n\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n    \n<div style=\"text-align:center\">\n    \n    <pre>\n        {{tarefa | json}}\n      </pre>\n    <form method=\"post\" enctype=\"multipart/form-data\" form #f=\"ngForm\">\n      <input type=\"file\" name=\"filetoupload\" #fd=\"ngModel\" [(ngModel)]=\"teste.arquivo\" (change)=\"fileChange($event)\"><br>\n      <span  class=\"input-group-text upload\"  (click)=\"upload()\"  id=\"btnUpload\">Upload</span>\n\n      <input type=\"submit\">\n    </form>\n<!-- <router-outlet></router-outlet> -->\n\n\n\n\n"
 
 /***/ }),
 
@@ -56,23 +56,54 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _teste_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./teste.service */ "./src/app/teste.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(ts, router) {
+        this.ts = ts;
+        this.router = router;
         this.title = 'app';
+        this.teste = new _teste_service__WEBPACK_IMPORTED_MODULE_1__["Teste"]();
     }
+    AppComponent.prototype.ngOnInit = function () {
+    };
+    AppComponent.prototype.fileChange = function (element) {
+        this.uploadedFiles = element.target.files;
+    };
+    AppComponent.prototype.upload = function () {
+        var _this = this;
+        console.log(this.uploadedFiles);
+        var formData = new FormData();
+        this.cont = new Array();
+        for (var i = 0; i < this.uploadedFiles.length; i++) {
+            this.cont.push(this.uploadedFiles[i].name);
+            formData.append("nome", "AAAAAA");
+            formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
+        }
+        console.log(formData.get("uploads[]"));
+        this.ts.upload(formData).subscribe(function (dados) {
+            _this.router.navigate(["/favorito"]);
+        });
+    };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_teste_service__WEBPACK_IMPORTED_MODULE_1__["TesteService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -97,12 +128,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _favorito_favorito_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./favorito/favorito.component */ "./src/app/favorito/favorito.component.ts");
 /* harmony import */ var _routing_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routing/routing.module */ "./src/app/routing/routing.module.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -121,6 +156,8 @@ var AppModule = /** @class */ (function () {
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _routing_routing_module__WEBPACK_IMPORTED_MODULE_5__["RoutingModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_6__["HttpModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"]
             ],
             providers: [],
@@ -160,14 +197,14 @@ module.exports = "<p>\n  favorito works!\n  <input type=\"text\" #ft=\"ngModel\"
 /*!************************************************!*\
   !*** ./src/app/favorito/favorito.component.ts ***!
   \************************************************/
-/*! exports provided: FavoritoComponent, Teste */
+/*! exports provided: FavoritoComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavoritoComponent", function() { return FavoritoComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Teste", function() { return Teste; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _teste_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../teste.service */ "./src/app/teste.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -178,10 +215,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var FavoritoComponent = /** @class */ (function () {
     function FavoritoComponent() {
-        this.projetos = new Teste();
-        this.projetos.nome = "Projeto1";
+        this.projetos = new _teste_service__WEBPACK_IMPORTED_MODULE_1__["Teste"]();
+        this.projetos.arquivo = "Projeto1";
     }
     FavoritoComponent.prototype.ngOnInit = function () {
     };
@@ -194,12 +232,6 @@ var FavoritoComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], FavoritoComponent);
     return FavoritoComponent;
-}());
-
-var Teste = /** @class */ (function () {
-    function Teste() {
-    }
-    return Teste;
 }());
 
 
@@ -250,6 +282,62 @@ var RoutingModule = /** @class */ (function () {
         })
     ], RoutingModule);
     return RoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/teste.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/teste.service.ts ***!
+  \**********************************/
+/*! exports provided: Teste, TesteService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Teste", function() { return Teste; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TesteService", function() { return TesteService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var Teste = /** @class */ (function () {
+    function Teste() {
+    }
+    return Teste;
+}());
+
+var TesteService = /** @class */ (function () {
+    function TesteService(http) {
+        this.http = http;
+        this.url = "https://sistema-treinamentos.herokuapp.com/";
+        // url: string = "http://localhost:8080/";
+        this.cabecalhoJson = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
+        };
+    }
+    TesteService.prototype.upload = function (t) {
+        return this.http.post(this.url + "upload", t);
+    };
+    TesteService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], TesteService);
+    return TesteService;
 }());
 
 
