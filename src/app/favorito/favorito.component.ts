@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Teste } from '../teste.service';
 
 @Component({
   selector: 'app-favorito',
@@ -9,15 +10,10 @@ export class FavoritoComponent implements OnInit {
   projetos = new Teste();
 
   constructor() { 
-    this.projetos.nome = "Projeto1";
+    this.projetos.arquivo = "Projeto1";
   }
 
   ngOnInit() {
   }
 
-}
-
-
-export class Teste {
-  nome: string;
 }

@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { FavoritoComponent } from './favorito/favorito.component';
 
 import { RoutingModule } from './routing/routing.module';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { RoutingModule } from './routing/routing.module';
   imports: [
     BrowserModule,
     RoutingModule,
+    HttpModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],
