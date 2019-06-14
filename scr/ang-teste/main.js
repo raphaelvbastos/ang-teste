@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n    \n<div style=\"text-align:center\">\n    \n    <pre>\n        {{tarefa | json}}\n      </pre>\n    <form method=\"post\" enctype=\"multipart/form-data\" form #f=\"ngForm\">\n      <input type=\"file\" name=\"filetoupload\" #fd=\"ngModel\" [(ngModel)]=\"teste.arquivo\" (change)=\"fileChange($event)\"><br>\n      <span  class=\"input-group-text upload\"  (click)=\"upload()\"  id=\"btnUpload\">Upload</span>\n\n      <input type=\"submit\">\n    </form>\n<!-- <router-outlet></router-outlet> -->\n\n\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n    \n<div style=\"text-align:center\">\n    \n    <pre>\n      </pre>\n    <form method=\"post\" enctype=\"multipart/form-data\" form #f=\"ngForm\">\n      <input type=\"file\" name=\"filetoupload\" #fd=\"ngModel\" [(ngModel)]=\"teste.arquivo\" (change)=\"fileChange($event)\"><br>\n      <span  class=\"input-group-text upload\"  (click)=\"upload()\"  id=\"btnUpload\">Upload</span>\n\n      <input type=\"submit\">\n    </form>\n<!-- <router-outlet></router-outlet> -->\n\n\n\n\n"
 
 /***/ }),
 
@@ -189,7 +189,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  favorito works!\n  <input type=\"text\" #ft=\"ngModel\" [(ngModel)]=\"projetos.nome\" class=\"form-control\" id=\"tarefa\" name=\"tarefa\" placeholder=\"Digite aqui\"\n        required>\n</p>\n"
+module.exports = "<p>\n  favorito works!\n  <!-- <input type=\"text\" #ft=\"ngModel\" [(ngModel)]=\"projetos.nome\" class=\"form-control\" id=\"tarefa\" name=\"tarefa\" placeholder=\"Digite aqui\"\n        required> -->\n</p>\n"
 
 /***/ }),
 
@@ -204,7 +204,6 @@ module.exports = "<p>\n  favorito works!\n  <input type=\"text\" #ft=\"ngModel\"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavoritoComponent", function() { return FavoritoComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _teste_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../teste.service */ "./src/app/teste.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -215,11 +214,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var FavoritoComponent = /** @class */ (function () {
+    // projetos = new Teste();
     function FavoritoComponent() {
-        this.projetos = new _teste_service__WEBPACK_IMPORTED_MODULE_1__["Teste"]();
-        this.projetos.arquivo = "Projeto1";
+        // this.projetos.arquivo = "Projeto1";
     }
     FavoritoComponent.prototype.ngOnInit = function () {
     };
