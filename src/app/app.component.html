@@ -3,7 +3,6 @@
 <div style="text-align:center">
     
     <pre>
-        {{tarefa | json}}
       </pre>
     <form method="post" enctype="multipart/form-data" form #f="ngForm">
       <input type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="teste.arquivo" (change)="fileChange($event)"><br>
