@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "formidable": "^1.2.1",
     "http-client": "^4.3.1",
     "mv": "^2.1.1",
